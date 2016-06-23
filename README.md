@@ -14,7 +14,7 @@ This image contains:
 
 The source image is located at DockerHub under [pymonger/scispark-zeppelin](https://hub.docker.com/r/pymonger/scispark-zeppelin/).
 
-## simple usage
+## Simple Usage
 
 To build a SciSpark Zeppelin image using the Dockerfile:
 
@@ -31,7 +31,7 @@ docker run --rm -p 8080:8080 pymonger/scispark-zeppelin:${VERSION}
 
 Zeppelin will be running at `http://${YOUR_DOCKER_HOST}:8080`.
 
-## Advanced usage
+## Advanced Usage
 
 Customize the Dockerfile to install data to HDFS or preload notebooks to Zeppelin
 and rerun the build instructions above. Remember to increment the VERSION.
