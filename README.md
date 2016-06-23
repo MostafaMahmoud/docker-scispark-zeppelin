@@ -12,6 +12,8 @@ This image contains:
 - [Hadoop 2.6.3](http://hadoop.apache.org/docs/r2.6.3)
 - [PySpark](http://spark.apache.org/docs/1.6.1/api/python) support with [Anaconda Python2 4.0.0](http://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh).
 
+The source image is located at DockerHub under [pymonger/scispark-zeppelin](https://hub.docker.com/r/pymonger/scispark-zeppelin/).
+
 ## simple usage
 
 To build a SciSpark Zeppelin image using the Dockerfile:
