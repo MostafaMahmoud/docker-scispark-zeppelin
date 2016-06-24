@@ -1,4 +1,4 @@
-FROM pymonger/scispark-zeppelin:v0.2_000
+FROM pymonger/scispark-zeppelin:latest
 
 # Zeppelin
 ENV ZEPPELIN_PORT 8080
@@ -6,6 +6,13 @@ ENV ZEPPELIN_HOME /usr/zeppelin
 ENV ZEPPELIN_CONF_DIR $ZEPPELIN_HOME/conf
 ENV ZEPPELIN_NOTEBOOK_DIR $ZEPPELIN_HOME/notebook
 
+# add notebooks
 #ADD about.json $ZEPPELIN_NOTEBOOK_DIR/2BH1SW5AH/note.json
+
+# add startup script
+COPY start-scispark.sh /root/start-scispark.sh
+RUN set -ex \
+ && chmod 755 /root/start-scispark.sh
+
 WORKDIR /root
 CMD ["./start-scispark.sh"]
