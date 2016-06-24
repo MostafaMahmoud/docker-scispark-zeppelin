@@ -1,0 +1,42 @@
+FROM pymonger/scispark-zeppelin:v0.3_002
+
+# Zeppelin
+ENV ZEPPELIN_PORT 8080
+ENV ZEPPELIN_HOME /usr/zeppelin
+ENV ZEPPELIN_CONF_DIR $ZEPPELIN_HOME/conf
+ENV ZEPPELIN_NOTEBOOK_DIR $ZEPPELIN_HOME/notebook
+
+# add notebooks
+ADD scispark_zeppelin_notebooks/workshop101/2BATEJKHX/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BATEJKHX/note.json
+ADD scispark_zeppelin_notebooks/workshop101/2BJEKRY4F/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BJEKRY4F/note.json
+ADD scispark_zeppelin_notebooks/workshop101/2BKQDQ527/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BKQDQ527/note.json
+ADD scispark_zeppelin_notebooks/workshop101/2BQCQR54M/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BQCQR54M/note.json
+ADD scispark_zeppelin_notebooks/workshop201/2BDPHMPTN/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BDPHMPTN/note.json
+ADD scispark_zeppelin_notebooks/workshop201/2BJGFE2KE/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BJGFE2KE/note.json
+ADD scispark_zeppelin_notebooks/workshop201/2BJYQBARR/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BJYQBARR/note.json
+ADD scispark_zeppelin_notebooks/workshop201/2BMFZNQPD/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BMFZNQPD/note.json
+ADD scispark_zeppelin_notebooks/workshop201/2BMN47T84/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BMN47T84/note.json
+ADD scispark_zeppelin_notebooks/workshop201/2BQ4RQABT/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BQ4RQABT/note.json
+ADD scispark_zeppelin_notebooks/workshop301/2BEXBMUHD/note.json \
+    $ZEPPELIN_NOTEBOOK_DIR/2BEXBMUHD/note.json
+
+# add startup script
+COPY start-scispark.sh /root/start-scispark.sh
+RUN set -ex \
+ && chmod 755 /root/start-scispark.sh \
+ && apt-get install -y wamerican \
+ && hdfs dfs -mkdir /usr/share/dict \
+ && hdfs dfs -copyFromLocal /usr/share/dict/words /usr/share/dict/words
+
+WORKDIR /root
+CMD ["./start-scispark.sh"]

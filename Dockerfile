@@ -6,9 +6,6 @@ ENV ZEPPELIN_HOME /usr/zeppelin
 ENV ZEPPELIN_CONF_DIR $ZEPPELIN_HOME/conf
 ENV ZEPPELIN_NOTEBOOK_DIR $ZEPPELIN_HOME/notebook
 
-# add notebooks
-#ADD about.json $ZEPPELIN_NOTEBOOK_DIR/2BH1SW5AH/note.json
-
 # add startup script
 COPY start-scispark.sh /root/start-scispark.sh
 RUN set -ex \
